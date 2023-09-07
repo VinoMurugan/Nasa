@@ -1,8 +1,27 @@
 import React, { useState } from 'react';
 
-const DataInput=() => {
+const DateInput = ({ onDateSubmit }) => {
+    const [date, setDate] = useState('');
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      onDateSubmit(date);
+    };
+  
     return (
- <h1> enter date</h1>
-    )
-}
-export default DataInput;
+      <form onSubmit={handleSubmit}>
+        <label>
+        
+          <input
+            type="text"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            placeholder="YYYY-MM-DD"
+          />
+        </label>
+        <button type="submit">Show Picture</button> 
+      </form>
+    );
+  };
+  
+  export default DateInput;

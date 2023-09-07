@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const AstronmyPicture = () =>{
   return (
-    <h1>api</h1>
+    <h1>Picture</h1>
   )
 }
 
