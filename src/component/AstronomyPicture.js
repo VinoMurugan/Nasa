@@ -13,7 +13,7 @@ export default function AstronmyPicture ()  {
   setnasaDdata(data)
  }
 useEffect(()=>{
-  getPicture('It')
+  getPicture()
 },[])
 return (
 
