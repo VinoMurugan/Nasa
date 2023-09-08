@@ -1,24 +1,39 @@
-import React,{useEffect, useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function AstronmyPicture ()  {
-  const apiKey = 'rwhCGfRfZ8AOd3uHhsC8e8kjYYfzLca';
- 
- const [nasaData,setnasaDdata] = useState(null);
+const AstronomyPicture = ({ apiKey, date }) => {
+  const [apodData, setApodData] = useState(null);
 
- const getPicture = async (date) =>{
-  const response = await fetch (
-    `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`
-  )
-  const data = await response.json();
-  setnasaDdata(data)
- }
-useEffect(()=>{
-  getPicture('It')
-},[])
-return (
+  useEffect(() => {
+    const fetchAPOD = async () => {
+      try {
+        const response = await fetch(
+          `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`
+        );
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setApodData(data);
+      } catch (error) {
+        console.error('Error fetching APOD:', error);
+      }
+    };
 
+    fetchAPOD();
+  }, [apiKey, date]);
 
- <img src={nasaData} alt={nasaData} />
+  if (!apodData) {
+    return <div>....OOPS NO PHOTOS....</div>;
+  }
 
-)
-}
+  return (
+    <div className="apod-container">
+      <h2>Astronomy Picture of the Day</h2>
+      <img src={apodData.url} alt={apodData.title} />
+      <h3>{apodData.title}</h3>
+      <p>{apodData.explanation}</p>
+    </div>
+  );
+};
+
+export default AstronomyPicture;

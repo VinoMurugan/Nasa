@@ -7,6 +7,8 @@ function App(){
     const [selectedDate, setSelectedDate] = useState('');
     const apiKey ='kOaYl1IgYvHn4c8Anmyheer0brFNnpTNIqdgARrt';
 
+   
+    
     const handleDateSubmit = (date) => {
         setSelectedDate(date);
     };
@@ -14,7 +16,7 @@ function App(){
     return (
         <div className="App">
         
-        <h1> NASA Astronmy Picture of the day</h1>
+        <h1>Want to See Amazing Picture</h1>
         
         <main>
         
