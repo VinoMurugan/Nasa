@@ -1,9 +1,24 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 
-const AstronmyPicture = () =>{
-  return (
-    <h1>Picture</h1>
+export default function AstronmyPicture ()  {
+  const apiKey = 'rwhCGfRfZ8AOd3uHhsC8e8kjYYfzLca';
+ 
+ const [nasaData,setnasaDdata] = useState(null);
+
+ const getPicture = async (date) =>{
+  const response = await fetch (
+    `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`
   )
-}
+  const data = await response.json();
+  setnasaDdata(data)
+ }
+useEffect(()=>{
+  getPicture('It')
+},[])
+return (
 
-export default AstronmyPicture;
+
+ <img src={nasaData} alt={nasaData} />
+
+)
+}
