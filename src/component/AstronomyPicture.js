@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const AstronomyPicture = ({ apiKey, date }) => {
-  const [apodData, setApodData] = useState(null);
+  const [nasaData, setnasaData] = useState(null);
 
   useEffect(() => {
     const fetchAPOD = async () => {
@@ -13,7 +13,7 @@ const AstronomyPicture = ({ apiKey, date }) => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setApodData(data);
+        setnasaData(data);
       } catch (error) {
         console.error('Error fetching APOD:', error);
       }
@@ -22,16 +22,16 @@ const AstronomyPicture = ({ apiKey, date }) => {
     fetchAPOD();
   }, [apiKey, date]);
 
-  if (!apodData) {
+  if (!nasaData) {
     return <div>....OOPS NO PHOTOS....</div>;
   }
 
   return (
     <div className="apod-container">
       <h2>Astronomy Picture of the Day</h2>
-      <img src={apodData.url} alt={apodData.title} />
-      <h3>{apodData.title}</h3>
-      <p>{apodData.explanation}</p>
+      <img src={nasaData.url} alt={nasaData.title} />
+      <h3>{nasaData.title}</h3>
+      <p>{nasaData.explanation}</p>
     </div>
   );
 };
