@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-const AstronomyPicture = ({ apiKey, date }) => {
-  const [apodData, setApodData] = useState(null);
+export default function AstronmyPicture ()  {
+  const apiKey = 'rwhCGfRfZ8AOd3uHhsC8e8kjYYfzLca';
+ 
+ const [nasaData,setnasaDdata] = useState(null);
 
-  useEffect(() => {
-    const fetchAPOD = async () => {
-      try {
-        const response = await fetch(
-          `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`
-        );
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setApodData(data);
-      } catch (error) {
-        console.error('Error fetching APOD:', error);
-      }
-    };
+ const getPicture = async (date) =>{
+  const response = await fetch (
+    `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`
+  )
+  const data = await response.json();
+  setnasaDdata(data)
+ }
+useEffect(()=>{
+  getPicture('It')
+},[])
+return (
 
     fetchAPOD();
   }, [apiKey, date]);
