@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Nasa/static/css/main.27e5bfe7.css",
+    "main.js": "/Nasa/static/js/main.ea92de1d.js",
+    "static/media/background.jpg": "/Nasa/static/media/background.8a51123d3bfd7cd386ba.jpg",
+    "index.html": "/Nasa/index.html",
+    "main.27e5bfe7.css.map": "/Nasa/static/css/main.27e5bfe7.css.map",
+    "main.ea92de1d.js.map": "/Nasa/static/js/main.ea92de1d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.27e5bfe7.css",
+    "static/js/main.ea92de1d.js"
+  ]
+}
