@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 const AstronomyPicture = ({ apiKey, date }) => {
   const [nasaData, setnasaData] = useState(null);
 
@@ -27,11 +28,12 @@ const AstronomyPicture = ({ apiKey, date }) => {
   }
 
   return (
-    <div className="apod-container">
+    <div className="apod-container"  style={{ border: '2px solid #333', padding: '20px', backgroundColor: '#f0f0f0', textAlign: 'center', color: 'black' }}>
       <h2>Astronomy Picture of the Day</h2>
       <img src={nasaData.url} alt={nasaData.title} />
       <h3>{nasaData.title}</h3>
       <p>{nasaData.explanation}</p>
+     
     </div>
   );
 };
